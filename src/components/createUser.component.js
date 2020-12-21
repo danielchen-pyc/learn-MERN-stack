@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import axios from 'axios'
 
-export default class createUser extends Component {
+export default class CreateUser extends Component {
     constructor(props) {
         super(props);
 
@@ -15,8 +15,8 @@ export default class createUser extends Component {
 
     componentDidMount() {
         this.setState({
-            users: ['test user'],
-            username: 'test user',
+            users: [''],
+            username: '',
         });
     }
 

@@ -3,7 +3,7 @@ import axios from 'axios'
 import DatePicker from 'react-datepicker'
 import "react-datepicker/dist/react-datepicker.css"
 
-export default class createExercise extends Component {
+export default class CreateExercise extends Component {
     constructor(props) {
         super(props);
 
@@ -33,6 +33,7 @@ export default class createExercise extends Component {
                     })
                 }
             })
+            .catch(error => console.log(error));
     }
 
 
@@ -76,7 +77,7 @@ export default class createExercise extends Component {
         axios.post('http://localhost:3001/exercises/add', exercise)
             .then(res => console.log(res.data));
         
-        window.location = 'http://localhost:3001/exercises/add';
+        window.location = '/';
     }
 
     render() {
@@ -86,7 +87,7 @@ export default class createExercise extends Component {
                 <form onSubmit={this.onSubmit}>
                     <div className="form-group">
                         <label>Username: </label>
-                        <select ref="userInput" 
+                        <select ref="userInput"
                             required 
                             className="form-control"
                             value={this.state.username}

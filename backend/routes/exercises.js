@@ -7,7 +7,7 @@ let Exercise = require('../models/exercise.model');
 router.route('/').get((req, res) => {
     Exercise.find()
         .then(exercise => res.json(exercise))
-        .catch(err => res.status(400).json('Error: ' + err));
+        .catch(err => res.status(400).json('Error: ' + err + 'Getting Exercises'));
 });
 
 
@@ -39,7 +39,7 @@ router.route('/:id').get((req, res) => {
 
 
 router.route('/:id').delete((req, res) => {
-    Exercise.findById(req.params.id)
+    Exercise.findByIdAndDelete(req.params.id)
         .then(() => res.json('Exercise deleted.'))
         .catch(err => res.status(400).json('Error: ' + err));
 });
