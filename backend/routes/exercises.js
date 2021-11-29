@@ -1,6 +1,7 @@
 
 const router = require('express').Router();
 let Exercise = require('../models/exercise.model');
+const mongoose = require('mongoose');
 
 
 // GET Request
@@ -27,14 +28,15 @@ router.route('/add').post((req, res) => {
 
     newExercise.save()
     .then(() => res.json('Exercise Added!'))
-    .catch(err => res.status(400).json('Error: ' + err));
+    .catch(err => res.status(400).json('Error Add: ' + err));
 });
 
 
 router.route('/:id').get((req, res) => {
-    Exercise.findById(req.params.id)
+    var id = new mongoose.Types.ObjectId(req.params.Id);
+    Exercise.findById(id)
         .then(exercise => res.json(exercise))
-        .catch(err => res.status(400).json('Error: ' + err));
+        .catch(err => res.status(400).json('Error fetch ID: ' + err));
 });
 
 
